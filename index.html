@@ -205,14 +205,14 @@
       <div class="pinpri-hero-bg"></div>
       <div class="pinpri-hero-content">
         <button class="back-btn" onclick="showPage('home')" aria-label="Kembali ke beranda">
-          &larr; Kembali
+          <img src="iconsGreen/005-left-arrow.png" alt="" class="back-icon" />
         </button>
         <div class="pinpri-hero-visual">
           <img src="AssetPinpri/Layout/Tak berjudul359.png" alt="Pinpri by Dynoo — Banner Utama"
             class="pinpri-hero-banner" loading="eager" />
         </div>
         <div class="pinpri-hero-text">
-          <span class="hero-eyebrow-pinpri">&#128142; Vanilla House Presents</span>
+          <span class="hero-eyebrow-pinpri">Vanilla House Presents</span>
           <h1 class="pinpri-hero-title">Pinpri<br /><span>by Dynoo</span></h1>
           <p class="pinpri-hero-subtitle">
             Pinjaman Pribadi yang <strong>cepat</strong>, <strong>transparan</strong>,
@@ -237,24 +237,24 @@
         <h2 class="section-title pinpri-section-title">Apa itu Pinpri?</h2>
         <div class="info-cards">
           <div class="info-card">
-            <div class="info-icon">&#128204;</div>
+            <div class="info-icon"><img src="iconsGreen/004-pen.png" alt="Icon" class="info-custom-icon" /></div>
             <h3>Pinjaman Pribadi</h3>
             <p>Pinpri adalah Pinjaman Pribadi antar individu dengan perjanjian dua pihak yang sadar dan tanpa paksaan.
             </p>
           </div>
           <div class="info-card">
-            <div class="info-icon">&#9200;</div>
+            <div class="info-icon"><img src="iconsGreen/003-check.png" alt="Icon" class="info-custom-icon" /></div>
             <h3>Tenor Singkat</h3>
             <p>Rata-rata tenor untuk pelanggan baru adalah 1x24 Jam (1 hari). Pelanggan lama bisa lebih fleksibel.</p>
           </div>
           <div class="info-card">
-            <div class="info-icon">&#128203;</div>
+            <div class="info-icon"><img src="iconsGreen/002-book.png" alt="Icon" class="info-custom-icon" /></div>
             <h3>SNK Ketat</h3>
             <p>Syarat &amp; Ketentuan cukup detail dan rinci. Pastikan kamu meminjam terlebih dahulu kepada orang
               sekitar (RL) serta baca dan pahami sebelum mengajukan.</p>
           </div>
           <div class="info-card">
-            <div class="info-icon">&#9878;</div>
+            <div class="info-icon"><img src="iconsGreen/001-paper.png" alt="Icon" class="info-custom-icon" /></div>
             <h3>Konsekuensi Jelas</h3>
             <p>Karena ini perjanjian dua pihak, konsekuensi pelanggaran bersifat mengikat sesuai kesepakatan.</p>
           </div>
@@ -270,7 +270,8 @@
 
       <div class="carousel-wrapper" id="pinpri-carousel-wrapper">
         <button class="carousel-btn carousel-prev" id="pinpri-prev" onclick="carouselPrev('pinpri')"
-          aria-label="Sebelumnya">&#8592;</button>
+          aria-label="Sebelumnya"><img src="iconsGreen/008-left-arrow-1.png" alt="Prev"
+            class="carousel-arrow-icon" /></button>
 
         <div class="carousel-track-container">
           <div class="carousel-track" id="pinpri-track">
@@ -326,7 +327,8 @@
         </div>
 
         <button class="carousel-btn carousel-next" id="pinpri-next" onclick="carouselNext('pinpri')"
-          aria-label="Selanjutnya">&#8594;</button>
+          aria-label="Selanjutnya"><img src="iconsGreen/007-right-arrow-1.png" alt="Next"
+            class="carousel-arrow-icon" /></button>
       </div><!-- /.carousel-wrapper -->
 
       <!-- Dots indicator -->
@@ -335,60 +337,86 @@
 
     <!-- Testimonials Section -->
     <div class="testimonials pinpri-testimonials">
-      <h2 class="section-title pinpri-section-title">Testimoni &#128172;</h2>
+      <h2 class="section-title pinpri-section-title">Testimoni</h2>
       <p class="section-subtitle" style="color:#4a7c59">Pengalaman nyata dari pelanggan setia Pinpri Dynoo</p>
 
-      <div class="testi-grid">
+      <div class="testi-carousel-wrapper">
+        <div class="testi-grid testi-carousel">
 
-        <div class="testi-card testi-card-pinpri">
-          <div class="testi-header">
-            <div class="testi-avatar testi-avatar-pinpri">
-              <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Avatar pelanggan Pinpri" />
+          <div class="testi-card testi-card-pinpri">
+            <div class="testi-header">
+              <div class="testi-avatar testi-avatar-pinpri">
+                <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Avatar pelanggan Pinpri" />
+              </div>
+              <div class="testi-label">Testimoni Customer</div>
             </div>
-            <div class="testi-meta">
-              <strong>Sarah W.</strong>
-              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <div class="testi-image-wrap">
+              <img src="AssetPinpri/chat_testimoni_mockup.png" alt="Screenshot Testimoni Pinpri 1" class="testi-image"
+                onclick="openLightbox(this.src, this.alt)" loading="lazy" />
             </div>
           </div>
-          <p class="testi-text">"Prosesnya cepet banget! Daftar pagi, langsung cair siang. Dynoo emang beda dari yang
-            lain, transparan dan ramah. Highly recommended!"</p>
-        </div>
 
-        <div class="testi-card testi-card-pinpri">
-          <div class="testi-header">
-            <div class="testi-avatar testi-avatar-pinpri">
-              <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Avatar pelanggan Pinpri" />
+          <div class="testi-card testi-card-pinpri">
+            <div class="testi-header">
+              <div class="testi-avatar testi-avatar-pinpri">
+                <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Avatar pelanggan Pinpri" />
+              </div>
+              <div class="testi-label">Testimoni Customer</div>
             </div>
-            <div class="testi-meta">
-              <strong>Rizky A.</strong>
-              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <div class="testi-image-wrap">
+              <img src="AssetPinpri/chat_testimoni_mockup.png" alt="Screenshot Testimoni Pinpri 2" class="testi-image"
+                onclick="openLightbox(this.src, this.alt)" loading="lazy" />
             </div>
           </div>
-          <p class="testi-text">"Sudah 3x langganan Pinpri Dynoo dan selalu memuaskan. SNK-nya jelas, nggak ada biaya
-            tersembunyi. Paling suka komunikasinya yang santai tapi profesional!"</p>
-        </div>
 
-        <div class="testi-card testi-card-pinpri">
-          <div class="testi-header">
-            <div class="testi-avatar testi-avatar-pinpri">
-              <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Avatar pelanggan Pinpri" />
+          <div class="testi-card testi-card-pinpri">
+            <div class="testi-header">
+              <div class="testi-avatar testi-avatar-pinpri">
+                <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Avatar pelanggan Pinpri" />
+              </div>
+              <div class="testi-label">Testimoni Customer</div>
             </div>
-            <div class="testi-meta">
-              <strong>Dewi M.</strong>
-              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <div class="testi-image-wrap">
+              <img src="AssetPinpri/chat_testimoni_mockup.png" alt="Screenshot Testimoni Pinpri 3" class="testi-image"
+                onclick="openLightbox(this.src, this.alt)" loading="lazy" />
             </div>
           </div>
-          <p class="testi-text">"Awalnya ragu karena pertama kali Pinpri, tapi Dynoo jelasin semua dari A-Z. Nggak ada
-            yang ditutupin, semua transparan. Terima kasih Dynoo!"</p>
-        </div>
 
-      </div><!-- /.testi-grid -->
+          <div class="testi-card testi-card-pinpri">
+            <div class="testi-header">
+              <div class="testi-avatar testi-avatar-pinpri">
+                <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Avatar pelanggan Pinpri" />
+              </div>
+              <div class="testi-label">Testimoni Customer</div>
+            </div>
+            <div class="testi-image-wrap">
+              <img src="AssetPinpri/chat_testimoni_mockup.png" alt="Screenshot Testimoni Pinpri 4" class="testi-image"
+                onclick="openLightbox(this.src, this.alt)" loading="lazy" />
+            </div>
+          </div>
+
+          <div class="testi-card testi-card-pinpri">
+            <div class="testi-header">
+              <div class="testi-avatar testi-avatar-pinpri">
+                <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Avatar pelanggan Pinpri" />
+              </div>
+              <div class="testi-label">Testimoni Customer</div>
+            </div>
+            <div class="testi-image-wrap">
+              <img src="AssetPinpri/chat_testimoni_mockup.png" alt="Screenshot Testimoni Pinpri 5" class="testi-image"
+                onclick="openLightbox(this.src, this.alt)" loading="lazy" />
+            </div>
+          </div>
+
+        </div><!-- /.testi-grid -->
+      </div>
     </div><!-- /.pinpri-testimonials -->
 
     <!-- Final CTA -->
     <div class="pinpri-cta-section">
       <div class="cta-section-inner">
-        <img src="AssetPinpri/Pricelist/Tak berjudul371.png" alt="Dynoo mascot" class="cta-mascot" loading="lazy" />
+        <img src="AssetPinpri\Layout\Tak berjudul361_20260504204044.png" alt="Dynoo mascot" class="cta-mascot"
+          loading="lazy" />
         <div class="cta-section-text">
           <h2>Siap Bergabung?</h2>
           <p>Hubungi Dynoo sekarang melalui WhatsApp untuk informasi lengkap dan proses pendaftaran Pinpri.</p>
@@ -402,6 +430,16 @@
           </a>
         </div>
       </div>
+    </div>
+
+    <!-- Page Navigation Row -->
+    <div class="page-nav-row">
+      <button class="page-nav-btn page-nav-back" onclick="showPage('home')" aria-label="Kembali ke beranda">
+        <img src="iconsGreen/005-left-arrow.png" alt="" class="back-icon" /> Beranda
+      </button>
+      <button class="page-nav-btn page-nav-next" onclick="showPage('arisan')" aria-label="Lihat halaman Arisan">
+        Arisan <img src="iconsGreen/006-right-arrow.png" alt="" class="back-icon" />
+      </button>
     </div>
 
     <!-- Footer -->
@@ -422,7 +460,7 @@
     <div class="arisan-hero">
       <div class="arisan-hero-content">
         <button class="back-btn back-btn-arisan" onclick="showPage('home')" aria-label="Kembali ke beranda">
-          &larr; Kembali
+          <img src="iconsGreen/008-left-arrow-1.png" alt="" class="back-icon" />
         </button>
         <div class="arisan-hero-visual">
           <img src="AssetArisan/HeaderX.png" alt="Arisan by Dynoo — Banner Utama" class="arisan-hero-banner"

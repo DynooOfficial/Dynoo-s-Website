@@ -356,17 +356,22 @@ a {
 .back-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 0.88rem;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
   background: rgba(255, 255, 255, 0.85);
-  color: var(--pinpri-dark);
   box-shadow: var(--shadow-sm);
   transition: all var(--transition);
   margin-bottom: 20px;
   border: 1.5px solid rgba(0, 0, 0, 0.08);
+}
+
+.back-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }
 
 .back-btn:hover {
@@ -377,6 +382,52 @@ a {
 
 .back-btn-arisan {
   color: var(--arisan-dark);
+}
+
+/* Page navigation row (bottom of Pinpri) */
+.page-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px;
+}
+
+.page-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: 2px solid transparent;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.page-nav-back {
+  background: var(--pinpri-pale);
+  color: var(--pinpri-dark);
+  border-color: var(--pinpri-light);
+}
+
+.page-nav-back:hover {
+  background: var(--pinpri-light);
+  transform: translateX(-3px);
+}
+
+.page-nav-next {
+  background: var(--pinpri-pale);
+  color: var(--pinpri-dark);
+  border-color: var(--pinpri-light);
+}
+
+.page-nav-next:hover {
+  background: var(--pinpri-light);
+  transform: translateX(3px);
 }
 
 /* Site footer */
@@ -1006,6 +1057,12 @@ a {
   margin-bottom: 10px;
 }
 
+.info-custom-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
 .info-card h3 {
   font-family: 'Nunito', sans-serif;
   font-weight: 800;
@@ -1393,6 +1450,13 @@ a {
   z-index: 2;
 }
 
+.carousel-arrow-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
 .carousel-btn:hover {
   transform: scale(1.12);
   box-shadow: var(--shadow-lg);
@@ -1436,15 +1500,29 @@ a {
 /* ================================================================
    9. TESTIMONIALS (shared)
    ================================================================ */
-.testi-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  max-width: 1000px;
+.testi-carousel-wrapper {
+  max-width: 1100px;
   margin: 0 auto;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.testi-grid {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding-bottom: 20px;
+  scrollbar-width: none;
+}
+
+.testi-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .testi-card {
+  flex: 0 0 calc(85vw - 40px);
+  scroll-snap-align: center;
   background: white;
   border-radius: var(--radius-md);
   padding: 24px 22px;
@@ -1453,17 +1531,18 @@ a {
   position: relative;
 }
 
-/* Quote decorative mark */
-.testi-card::before {
-  content: '\201C';
-  position: absolute;
-  top: 12px;
-  right: 20px;
-  font-size: 5rem;
-  line-height: 1;
-  opacity: 0.06;
-  font-family: 'Georgia', serif;
-  pointer-events: none;
+@media (min-width: 768px) {
+  .testi-card {
+    flex: 0 0 calc(33.333% - 14px);
+    scroll-snap-align: start;
+  }
+}
+
+.testi-label {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--text-dark);
 }
 
 .testi-card:hover {
@@ -1505,24 +1584,24 @@ a {
   object-fit: cover;
 }
 
-.testi-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.testi-image-wrap {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: zoom-in;
 }
 
-.testi-meta strong {
-  font-family: 'Nunito', sans-serif;
-  font-weight: 800;
-  font-size: 1rem;
-  color: var(--text-dark);
+.testi-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform var(--transition);
 }
 
-.testi-text {
-  font-size: 0.92rem;
-  color: var(--text-mid);
-  line-height: 1.7;
-  font-style: italic;
+.testi-image-wrap:hover .testi-image {
+  transform: scale(1.02);
 }
 
 /* ================================================================
