@@ -39,9 +39,9 @@ function showPage(pageId) {
 
   // Update document title for each page
   var titles = {
-    home:   'Dynoo — Pinpri & Arisan Terpercaya',
-    pinpri: 'Pinpri by Dynoo — Pinjaman Pribadi Terpercaya',
-    arisan: 'Arisan By Dynoo — Arisan Menyenangkan & Amanah'
+    home:   'Dynoo Official',
+    pinpri: 'Pinpri | Dynoo Official',
+    arisan: 'Arisan | Dynoo Official'
   };
   document.title = titles[pageId] || titles.home;
 
