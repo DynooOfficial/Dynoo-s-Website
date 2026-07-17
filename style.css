@@ -430,6 +430,30 @@ a {
   transform: translateX(3px);
 }
 
+/* Arisan nav variants */
+.page-nav-back.arisan {
+  background: var(--arisan-pale);
+  color: var(--arisan-dark);
+  border-color: var(--arisan-light);
+}
+
+.page-nav-back.arisan:hover {
+  background: var(--arisan-light);
+  transform: translateX(-3px);
+}
+
+.page-nav-next.arisan {
+  background: var(--arisan-pale);
+  color: var(--arisan-dark);
+  border-color: var(--arisan-light);
+}
+
+.page-nav-next.arisan:hover {
+  background: var(--arisan-light);
+  transform: translateX(3px);
+}
+
+
 /* Site footer */
 .site-footer {
   text-align: center;
@@ -453,6 +477,86 @@ a {
   background: var(--arisan-pale);
   color: var(--arisan-dark);
 }
+
+/* Hero CTA group: WA + IG side by side */
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-ig-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--wa-green), var(--wa-green-dark));
+  border: none;
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+  transition: all var(--transition);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.hero-ig-btn .ig-icon {
+  width: 22px;
+  height: 22px;
+  color: white;
+  fill: white;
+}
+
+.hero-ig-btn:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+}
+
+/* Instagram Footer Icon styling */
+.footer-ig-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  margin-top: 16px;
+  transition: all var(--transition);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.ig-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.pinpri-ig {
+  background: white;
+  color: var(--pinpri-main);
+  border-color: var(--pinpri-light);
+}
+
+.pinpri-ig:hover {
+  background: var(--pinpri-main);
+  color: white;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.arisan-ig {
+  background: white;
+  color: var(--arisan-main);
+  border-color: var(--arisan-light);
+}
+
+.arisan-ig:hover {
+  background: var(--arisan-main);
+  color: white;
+  transform: translateY(-2px) scale(1.05);
+}
+
 
 /* Stars */
 .stars {
@@ -1234,6 +1338,7 @@ a {
   border: 2px solid transparent;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .arisan-type-card:hover {
@@ -1243,8 +1348,9 @@ a {
 }
 
 .arisan-type-special {
-  border-top: 4px solid var(--arisan-beige);
+  border: 3px solid var(--arisan-main);
 }
+
 
 .arisan-type-img-wrap {
   background: var(--arisan-pale);
@@ -1518,6 +1624,24 @@ a {
 /* ================================================================
    9. TESTIMONIALS (shared)
    ================================================================ */
+.testi-hashtag {
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin-top: -16px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.pinpri-hashtag {
+  color: var(--pinpri-main);
+}
+
+.arisan-hashtag {
+  color: var(--arisan-main);
+}
+
 .testi-carousel-wrapper {
   max-width: 1100px;
   margin: 0 auto;
@@ -1928,3 +2052,362 @@ a {
 .arisan-hero-banner {
   image-rendering: -webkit-optimize-contrast;
 }
+
+/* ================================================================
+   17. PROFIT CALCULATOR SECTION (Pinpri)
+   ================================================================ */
+.pinpri-calculator {
+  background: var(--pinpri-pale);
+  padding: 60px 20px;
+  position: relative;
+}
+
+.pinpri-calculator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--pinpri-main), var(--arisan-beige), var(--pinpri-main));
+}
+
+.calc-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 1000px;
+  margin: 40px auto 0;
+}
+
+@media (min-width: 768px) {
+  .calc-container {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.calc-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 30px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid transparent;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.calc-form-card {
+  border-top: 4px solid var(--pinpri-main);
+}
+
+.calc-result-card {
+  border-top: 4px solid var(--arisan-beige);
+  background: linear-gradient(135deg, #ffffff, var(--pinpri-pale));
+}
+
+.calc-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  padding-bottom: 15px;
+}
+
+.calc-card-header h3 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--pinpri-dark);
+}
+
+.calc-header-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--pinpri-main);
+}
+
+.calc-header-icon.gold {
+  color: var(--arisan-tan);
+}
+
+.calc-input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.calc-input-group label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+}
+
+.input-with-prefix {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 0 15px;
+  transition: all var(--transition);
+}
+
+.input-with-prefix:focus-within {
+  border-color: var(--pinpri-main);
+  box-shadow: 0 0 0 3px rgba(46, 125, 82, 0.15);
+  background: white;
+}
+
+.input-with-prefix .prefix {
+  font-weight: 800;
+  color: var(--pinpri-dark);
+  font-size: 1rem;
+  margin-right: 5px;
+}
+
+.input-with-prefix input {
+  border: none;
+  background: transparent;
+  padding: 14px 5px;
+  font-size: 1.05rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--text-dark);
+  width: 100%;
+  outline: none;
+}
+
+.calc-input-group input[type="number"] {
+  background: #f8f9fa;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 14px 15px;
+  font-size: 1.05rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  color: var(--text-dark);
+  transition: all var(--transition);
+}
+
+.calc-input-group input[type="number"]:focus {
+  border-color: var(--pinpri-main);
+  box-shadow: 0 0 0 3px rgba(46, 125, 82, 0.15);
+  background: white;
+  outline: none;
+}
+
+.duration-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+@media (min-width: 480px) {
+  .duration-options {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.duration-btn {
+  background: #f8f9fa;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 12px 8px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.duration-btn:hover {
+  background: #f1f3f5;
+  border-color: var(--pinpri-light);
+}
+
+.duration-btn.active {
+  background: var(--pinpri-pale);
+  border-color: var(--pinpri-main);
+  color: var(--pinpri-dark);
+  box-shadow: 0 0 0 1px var(--pinpri-main);
+}
+
+.duration-btn .rate {
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: var(--arisan-beige);
+  color: var(--pinpri-dark);
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+
+.duration-btn.active .rate {
+  background: var(--pinpri-main);
+  color: white;
+}
+
+.calc-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.calc-btn-primary, .calc-btn-secondary {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+  border: none;
+  flex-grow: 1;
+}
+
+.calc-btn-primary {
+  background: linear-gradient(135deg, var(--pinpri-main), var(--pinpri-dark));
+  color: white;
+  box-shadow: 0 4px 10px rgba(46, 125, 82, 0.2);
+}
+
+.calc-btn-primary:hover {
+  background: linear-gradient(135deg, var(--pinpri-mid), var(--pinpri-main));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(46, 125, 82, 0.3);
+}
+
+.calc-btn-secondary {
+  background: #f1f3f5;
+  color: var(--text-dark);
+}
+
+.calc-btn-secondary:hover {
+  background: #e9ecef;
+}
+
+.validation-error {
+  color: #dc3545;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-top: -2px;
+  display: block;
+}
+
+/* Result Card UI */
+.result-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 10px;
+  flex-grow: 1;
+  color: var(--text-light);
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.result-placeholder p {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  max-width: 250px;
+}
+
+.result-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1;
+  animation: calcFadeIn 0.4s ease-out;
+}
+
+@keyframes calcFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.result-label {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.result-value {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+}
+
+.rate-highlight {
+  background: var(--arisan-beige);
+  color: var(--pinpri-dark);
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  border: 1px solid var(--arisan-tan);
+}
+
+.profit-highlight {
+  color: var(--pinpri-main);
+  font-size: 1.15rem;
+}
+
+.result-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 8px 0;
+}
+
+.total-row {
+  background: var(--pinpri-pale);
+  padding: 15px;
+  border-radius: var(--radius-sm);
+  border: 1.5px dashed var(--arisan-beige);
+}
+
+.total-row .result-label {
+  font-weight: 800;
+  color: var(--pinpri-dark);
+  font-size: 0.98rem;
+}
+
+.total-highlight {
+  font-size: 1.35rem;
+  color: var(--pinpri-dark);
+  text-shadow: 0 1px 0 white;
+}
+
+.result-note {
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+.result-note p {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}

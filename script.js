@@ -425,6 +425,166 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // --- Profit Calculator Logic ---
+  var amountInput = document.getElementById('calc-amount');
+  var durationBtns = document.querySelectorAll('.duration-btn');
+  var customDaysGroup = document.getElementById('custom-days-group');
+  var customDaysInput = document.getElementById('calc-custom-days');
+  
+  var btnCalculate = document.getElementById('btn-calc-calculate');
+  var btnReset = document.getElementById('btn-calc-reset');
+  
+  var amountError = document.getElementById('amount-validation-error');
+  var daysError = document.getElementById('days-validation-error');
+  
+  var resultPlaceholder = document.getElementById('calc-result-placeholder');
+  var resultDetails = document.getElementById('calc-result-details');
+  
+  var resAmount = document.getElementById('res-amount');
+  var resRate = document.getElementById('res-rate');
+  var resProfit = document.getElementById('res-profit');
+  var resTotal = document.getElementById('res-total');
+
+  var activeDurationMode = '1'; // '1' | '2' | '3' | 'more'
+
+  // Format dynamic Rupiah input on typing
+  if (amountInput) {
+    amountInput.addEventListener('input', function(e) {
+      var value = e.target.value;
+      var clean = value.replace(/\D/g, '');
+      if (clean) {
+        var formatted = clean.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        e.target.value = formatted;
+      } else {
+        e.target.value = '';
+      }
+      clearErrors();
+    });
+  }
+
+  // Handle duration choice buttons
+  durationBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      durationBtns.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      
+      var daysValue = btn.getAttribute('data-days');
+      activeDurationMode = daysValue;
+      
+      if (daysValue === 'more') {
+        customDaysGroup.style.display = 'flex';
+      } else {
+        customDaysGroup.style.display = 'none';
+        clearErrors();
+      }
+    });
+  });
+
+  if (customDaysInput) {
+    customDaysInput.addEventListener('input', function() {
+      clearErrors();
+    });
+  }
+
+  function clearErrors() {
+    if (amountError) amountError.textContent = '';
+    if (daysError) daysError.textContent = '';
+  }
+
+  function parseRupiah(str) {
+    if (!str) return 0;
+    return parseInt(str.replace(/\./g, ''), 10) || 0;
+  }
+
+  function formatRupiahOutput(num) {
+    return 'Rp' + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  }
+
+  if (btnCalculate) {
+    btnCalculate.addEventListener('click', function() {
+      clearErrors();
+      
+      var amountStr = amountInput.value.trim();
+      var amount = parseRupiah(amountStr);
+      var hasError = false;
+
+      // Validation
+      if (!amountStr) {
+        amountError.textContent = 'Nominal tidak boleh kosong.';
+        hasError = true;
+      } else if (amount <= 0) {
+        amountError.textContent = 'Nominal harus berupa angka positif.';
+        hasError = true;
+      }
+
+      var days = 1;
+      var rate = 30; // default 30%
+
+      if (activeDurationMode === 'more') {
+        var customDaysVal = customDaysInput.value.trim();
+        var customDays = parseInt(customDaysVal, 10);
+        
+        if (!customDaysVal) {
+          daysError.textContent = 'Jumlah hari tidak boleh kosong.';
+          hasError = true;
+        } else if (isNaN(customDays) || customDays <= 3) {
+          daysError.textContent = 'Jumlah hari harus lebih dari 3.';
+          hasError = true;
+        } else {
+          days = customDays;
+          rate = 60 + (days - 3) * 10;
+        }
+      } else {
+        days = parseInt(activeDurationMode, 10);
+        if (days === 1) rate = 30;
+        else if (days === 2) rate = 50;
+        else if (days === 3) rate = 60;
+      }
+
+      if (hasError) {
+        resultPlaceholder.style.display = 'flex';
+        resultDetails.style.display = 'none';
+        return;
+      }
+
+      // Calculation
+      var profit = Math.floor(amount * (rate / 100));
+      var total = amount + profit;
+
+      // Display results
+      resAmount.textContent = formatRupiahOutput(amount);
+      resRate.textContent = rate + '%';
+      resProfit.textContent = formatRupiahOutput(profit);
+      resTotal.textContent = formatRupiahOutput(total);
+
+      resultPlaceholder.style.display = 'none';
+      resultDetails.style.display = 'flex';
+      
+      // Trigger animation
+      resultDetails.style.animation = 'none';
+      resultDetails.offsetHeight; /* trigger reflow */
+      resultDetails.style.animation = null;
+    });
+  }
+
+  if (btnReset) {
+    btnReset.addEventListener('click', function() {
+      clearErrors();
+      if (amountInput) amountInput.value = '';
+      if (customDaysInput) customDaysInput.value = '4';
+      
+      durationBtns.forEach(function(b) {
+        if (b.getAttribute('data-days') === '1') b.classList.add('active');
+        else b.classList.remove('active');
+      });
+      activeDurationMode = '1';
+      customDaysGroup.style.display = 'none';
+      
+      resultPlaceholder.style.display = 'flex';
+      resultDetails.style.display = 'none';
+    });
+  }
+
   console.log('%c🦖 Dynoo Website Loaded!', 'color:#2e7d52;font-size:1.2em;font-weight:bold;');
   console.log('%cGanti "nomor-wa-anda" di link WhatsApp dengan nomor aktif Anda.', 'color:#5a6e4a;');
 });
