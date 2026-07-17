@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Dynoo - Layanan Pinpri (Pinjaman Pribadi) dan Arisan terpercaya. Proses cepat, amanah, dan penuh semangat bersama Dynoo!" />
+  <title>Dynoo — Pinpri & Arisan Terpercaya</title>
+
+  <!-- Google Fonts: Nunito (playful, rounded) + Poppins (clean body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       GLOBAL NAVIGATION BAR
+  ============================================================ -->
+  <nav id="global-nav" class="global-nav">
+    <div class="nav-inner">
+      <!-- Brand logo / home button -->
+      <button class="nav-brand" id="btn-nav-home" onclick="showPage('home')" aria-label="Beranda Dynoo">
+        <span class="nav-brand-text">&#10022; Dynoo</span>
+      </button>
+
+      <!-- Desktop navigation links -->
+      <div class="nav-links">
+        <button class="nav-link" id="navlink-home" onclick="showPage('home')" aria-current="page">Beranda</button>
+        <button class="nav-link" id="navlink-pinpri" onclick="showPage('pinpri')">Pinpri</button>
+        <button class="nav-link" id="navlink-arisan" onclick="showPage('arisan')">Arisan</button>
+      </div>
+
+      <!-- Mobile hamburger button -->
+      <button class="hamburger" id="hamburger-btn" aria-label="Buka menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-link" onclick="showPage('home');   toggleMobileMenu()">&#127968; Beranda</button>
+      <button class="mobile-link" onclick="showPage('pinpri'); toggleMobileMenu()">&#128176; Pinpri</button>
+      <button class="mobile-link" onclick="showPage('arisan'); toggleMobileMenu()">&#127881; Arisan</button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       PAGE: HOME
+  ============================================================ -->
+  <section id="page-home" class="page page-home active">
+
+    <!-- Hero Section -->
+    <div class="home-hero">
+      <div class="home-hero-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+      <div class="home-hero-content">
+        <p class="home-hero-eyebrow">Selamat Datang di</p>
+        <!-- <h1 class="home-hero-title">
+          <span class="gradient-text-home">Vanilla House</span>
+        </h1> -->
+        <div class="home-hero-logo-wrap">
+          <img src="AssetArisan/Dynoo Official.jpeg" alt="Dynoo Official Logo" class="home-hero-logo" loading="eager" />
+        </div>
+        <p class="home-hero-tagline">can be in all situations of saving and emergency</p>
+        <p class="home-hero-subtitle">
+          Layanan <strong>Pinjaman Pribadi</strong> dengan fee akhir yang cepat dan amanah,<br />
+          serta <strong>Arisan</strong> yang terpercaya, amanah, dapat diandalkan dan menguntungkan!
+        </p>
+        <div class="home-hero-badges">
+          <span class="badge badge-trusted">&#10003; Terpercaya</span>
+          <span class="badge badge-fast">&#9889; Proses Cepat</span>
+          <span class="badge badge-fun">&#127881; Menguntungkan</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service Cards Section -->
+    <div class="home-services">
+      <h2 class="section-title home-services-title">Pilih Layanan Kami</h2>
+      <p class="section-subtitle">Dua layanan unggulan dari Dynoo, siap membantu kebutuhan finansialmu!</p>
+
+      <div class="service-cards">
+
+        <!-- Pinpri Card -->
+        <div class="service-card card-pinpri" onclick="showPage('pinpri')" role="button" tabindex="0"
+          onkeydown="if(event.key==='Enter')showPage('pinpri')" aria-label="Buka halaman Pinpri">
+          <div class="card-accent card-accent-pinpri"></div>
+          <div class="card-mascot-wrap">
+            <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Maskot Pinpri by Dynoo"
+              class="card-mascot" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <div class="card-tag tag-pinpri">PINPRI</div>
+            <h3 class="card-title">Pinjaman Pribadi - est 2022</h3>
+            <p class="card-desc">
+              Butuh dana cepat? Pinpri by Dynoo hadir dengan proses mudah,
+              tenor fleksibel, dan penanganan profesional. Daftar sekarang!
+            </p>
+            <ul class="card-features">
+              <li>&#128184; Limit hingga jutaan rupiah</li>
+              <li>&#9200; Tenor 1 hari sampai 1 bulan</li>
+              <li>&#128203; Syarat jelas &amp; transparan</li>
+            </ul>
+            <div class="card-cta">
+              <span class="cta-btn cta-pinpri">Lihat Detail &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arisan Card -->
+        <div class="service-card card-arisan" onclick="showPage('arisan')" role="button" tabindex="0"
+          onkeydown="if(event.key==='Enter')showPage('arisan')" aria-label="Buka halaman Arisan">
+          <div class="card-accent card-accent-arisan"></div>
+          <div class="card-mascot-wrap">
+            <img src="AssetArisan/Logo.png" alt="Maskot Arisan by Dynoo" class="card-mascot" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <div class="card-tag tag-arisan">ARISAN</div>
+            <h3 class="card-title">Arisan By Dynoo - est 2026</h3>
+            <p class="card-desc">
+              Ikut arisan yang seru, teratur, dan aman bersama komunitas
+              Dynoo. Tersedia Arisan Mendatar &amp; Menurun!
+            </p>
+            <ul class="card-features">
+              <li>&#127942; Arisan Mendatar &amp; Menurun</li>
+              <li>&#128101; Komunitas solid &amp; amanah</li>
+              <li>&#127919; Sistem terstruktur &amp; jelas</li>
+            </ul>
+            <div class="card-cta">
+              <span class="cta-btn cta-arisan">Lihat Detail &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.service-cards -->
+    </div><!-- /.home-services -->
+
+    <!-- Why Choose Dynoo -->
+    <div class="home-why">
+      <div class="why-inner">
+        <img src="AssetArisan/Ava-DuosByDynoo.png" alt="Duos by Dynoo" class="why-mascot" loading="lazy" />
+        <div class="why-content">
+          <h2 class="why-title">Kenapa Pilih <span class="gradient-text-arisan">Dynoo</span>?</h2>
+          <div class="why-grid">
+            <div class="why-item">
+              <div class="why-icon">&#128737;</div>
+              <div>
+                <strong>Amanah &amp; Terpercaya</strong>
+                <p>Komitmen penuh dalam setiap transaksi dengan prinsip kejujuran dan transparansi.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-icon">&#9889;</div>
+              <div>
+                <strong>Proses Cepat</strong>
+                <p>Tidak perlu menunggu lama — keputusan cepat dengan verifikasi yang efisien.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-icon">&#128172;</div>
+              <div>
+                <strong>Komunikasi Terbuka</strong>
+                <p>Tim Dynoo selalu siap menjawab pertanyaan dan memberikan panduan terbaik.</p>
+              </div>
+            </div>
+            <div class="why-item">
+              <div class="why-icon">&#129309;</div>
+              <div>
+                <strong>Tanpa Paksaan</strong>
+                <p>Semua berdasarkan persetujuan dua pihak dengan sadar dan tanpa tekanan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>&copy; 2025 Dynoo. Dibuat dengan &#128154; &amp; semangat.</p>
+      <p class="footer-sub">Hubungi kami via WhatsApp untuk informasi lebih lanjut.</p>
+    </footer>
+
+  </section><!-- /#page-home -->
+
+
+  <!-- ============================================================
+       PAGE: PINPRI
+  ============================================================ -->
+  <section id="page-pinpri" class="page page-pinpri">
+
+    <!-- Hero -->
+    <div class="pinpri-hero">
+      <div class="pinpri-hero-bg"></div>
+      <div class="pinpri-hero-content">
+        <button class="back-btn" onclick="showPage('home')" aria-label="Kembali ke beranda">
+          &larr; Kembali
+        </button>
+        <div class="pinpri-hero-visual">
+          <img src="AssetPinpri/Layout/Tak berjudul359.png" alt="Pinpri by Dynoo — Banner Utama"
+            class="pinpri-hero-banner" loading="eager" />
+        </div>
+        <div class="pinpri-hero-text">
+          <span class="hero-eyebrow-pinpri">&#128142; Vanilla House Presents</span>
+          <h1 class="pinpri-hero-title">Pinpri<br /><span>by Dynoo</span></h1>
+          <p class="pinpri-hero-subtitle">
+            Pinjaman Pribadi yang <strong>cepat</strong>, <strong>transparan</strong>,
+            dan <strong>terpercaya</strong>. Proses mudah, syarat jelas, Dana cair!
+          </p>
+          <!-- Primary CTA -->
+          <a href="https://wa.me/nomor-wa-anda?text=Halo%20Dynoo!%20Saya%20tertarik%20untuk%20mendaftar%20Pinpri"
+            target="_blank" rel="noopener noreferrer" class="wa-btn wa-btn-pinpri" id="pinpri-cta-hero">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            Daftar via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info / Pengertian Section -->
+    <div class="pinpri-info">
+      <div class="pinpri-info-inner">
+        <h2 class="section-title pinpri-section-title">Apa itu Pinpri?</h2>
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-icon">&#128204;</div>
+            <h3>Pinjaman Pribadi</h3>
+            <p>Pinpri adalah Pinjaman Pribadi antar individu dengan perjanjian dua pihak yang sadar dan tanpa paksaan.
+            </p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#9200;</div>
+            <h3>Tenor Singkat</h3>
+            <p>Rata-rata tenor untuk pelanggan baru adalah 1x24 Jam (1 hari). Pelanggan lama bisa lebih fleksibel.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#128203;</div>
+            <h3>SNK Ketat</h3>
+            <p>Syarat &amp; Ketentuan cukup detail dan rinci. Pastikan kamu meminjam terlebih dahulu kepada orang
+              sekitar (RL) serta baca dan pahami sebelum mengajukan.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon">&#9878;</div>
+            <h3>Konsekuensi Jelas</h3>
+            <p>Karena ini perjanjian dua pihak, konsekuensi pelanggaran bersifat mengikat sesuai kesepakatan.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery / Carousel Section -->
+    <div class="pinpri-gallery">
+      <h2 class="section-title pinpri-section-title">Katalog Pinpri</h2>
+      <p class="section-subtitle" style="color:#4a7c59">Klik gambar untuk memperbesar. Geser untuk melihat lebih banyak.
+      </p>
+
+      <div class="carousel-wrapper" id="pinpri-carousel-wrapper">
+        <button class="carousel-btn carousel-prev" id="pinpri-prev" onclick="carouselPrev('pinpri')"
+          aria-label="Sebelumnya">&#8592;</button>
+
+        <div class="carousel-track-container">
+          <div class="carousel-track" id="pinpri-track">
+            <!-- Slide 1 -->
+            <div class="carousel-slide">
+              <img src="AssetPinpri/Pricelist/Tak berjudul371.png" alt="Maskot Pinpri Dynoo" class="carousel-img"
+                loading="lazy" onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Dynoo Pinpri</p>
+            </div>
+            <!-- Slide 2 -->
+            <div class="carousel-slide">
+              <img src="AssetPinpri/Pricelist/Tak berjudul366.png" alt="Disclaimer Pinpri by Dynoo" class="carousel-img"
+                loading="lazy" onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Disclaimer</p>
+            </div>
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+              <img src="AssetPinpri/Pricelist/Tak berjudul365.png" alt="Pengertian Pinpri by Dynoo" class="carousel-img"
+                loading="lazy" onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Pengertian Pinpri</p>
+            </div>
+            <!-- Slide 4 -->
+            <div class="carousel-slide">
+              <img src="AssetPinpri/Pricelist/Tak berjudul368.png" alt="Info Pinpri 5" class="carousel-img"
+                loading="lazy" onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Cara Pinpri</p>
+            </div>
+            <!-- Slide 5 -->
+            <div class="carousel-slide">
+              <img src="AssetPinpri/Pricelist/Tak berjudul369.png" alt="Info Pinpri 6" class="carousel-img"
+                loading="lazy" onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Syarat dan Ketentuan (SNK-1)</p>
+            </div>
+            <!-- Slide 6 -->
+            <div class="carousel-slide">
+              <img src="AssetPinpri/Pricelist/Tak berjudul367.png" alt="SnK Pinpri by Dynoo" class="carousel-img"
+                loading="lazy" onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Syarat dan Ketentuan (SNK-2)</p>
+            </div>
+            <!-- Slide 7 -->
+            <div class="carousel-slide">
+              <img src="AssetPinpri/Pricelist/Tak berjudul363.png" alt="Tenor & Fee Pinpri by Dynoo"
+                class="carousel-img" loading="lazy" onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Tenor &amp; Fee</p>
+            </div>
+
+
+
+
+
+
+          </div><!-- /.carousel-track -->
+        </div>
+
+        <button class="carousel-btn carousel-next" id="pinpri-next" onclick="carouselNext('pinpri')"
+          aria-label="Selanjutnya">&#8594;</button>
+      </div><!-- /.carousel-wrapper -->
+
+      <!-- Dots indicator -->
+      <div class="carousel-dots" id="pinpri-dots"></div>
+    </div><!-- /.pinpri-gallery -->
+
+    <!-- Testimonials Section -->
+    <div class="testimonials pinpri-testimonials">
+      <h2 class="section-title pinpri-section-title">Testimoni &#128172;</h2>
+      <p class="section-subtitle" style="color:#4a7c59">Pengalaman nyata dari pelanggan setia Pinpri Dynoo</p>
+
+      <div class="testi-grid">
+
+        <div class="testi-card testi-card-pinpri">
+          <div class="testi-header">
+            <div class="testi-avatar testi-avatar-pinpri">
+              <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Avatar pelanggan Pinpri" />
+            </div>
+            <div class="testi-meta">
+              <strong>Sarah W.</strong>
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+          </div>
+          <p class="testi-text">"Prosesnya cepet banget! Daftar pagi, langsung cair siang. Dynoo emang beda dari yang
+            lain, transparan dan ramah. Highly recommended!"</p>
+        </div>
+
+        <div class="testi-card testi-card-pinpri">
+          <div class="testi-header">
+            <div class="testi-avatar testi-avatar-pinpri">
+              <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Avatar pelanggan Pinpri" />
+            </div>
+            <div class="testi-meta">
+              <strong>Rizky A.</strong>
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+          </div>
+          <p class="testi-text">"Sudah 3x langganan Pinpri Dynoo dan selalu memuaskan. SNK-nya jelas, nggak ada biaya
+            tersembunyi. Paling suka komunikasinya yang santai tapi profesional!"</p>
+        </div>
+
+        <div class="testi-card testi-card-pinpri">
+          <div class="testi-header">
+            <div class="testi-avatar testi-avatar-pinpri">
+              <img src="AssetPinpri/Layout/Tak berjudul361_20260504204044.png" alt="Avatar pelanggan Pinpri" />
+            </div>
+            <div class="testi-meta">
+              <strong>Dewi M.</strong>
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+          </div>
+          <p class="testi-text">"Awalnya ragu karena pertama kali Pinpri, tapi Dynoo jelasin semua dari A-Z. Nggak ada
+            yang ditutupin, semua transparan. Terima kasih Dynoo!"</p>
+        </div>
+
+      </div><!-- /.testi-grid -->
+    </div><!-- /.pinpri-testimonials -->
+
+    <!-- Final CTA -->
+    <div class="pinpri-cta-section">
+      <div class="cta-section-inner">
+        <img src="AssetPinpri/Pricelist/Tak berjudul371.png" alt="Dynoo mascot" class="cta-mascot" loading="lazy" />
+        <div class="cta-section-text">
+          <h2>Siap Bergabung?</h2>
+          <p>Hubungi Dynoo sekarang melalui WhatsApp untuk informasi lengkap dan proses pendaftaran Pinpri.</p>
+          <a href="https://wa.me/nomor-wa-anda?text=Halo%20Dynoo!%20Saya%20ingin%20mendaftar%20Pinpri" target="_blank"
+            rel="noopener noreferrer" class="wa-btn wa-btn-pinpri" id="pinpri-cta-bottom">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            Chat di WhatsApp Sekarang
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer footer-pinpri">
+      <p>&copy; 2025 Pinpri by Dynoo &mdash; Vanilla House.</p>
+      <p class="footer-sub">Semua transaksi berdasarkan perjanjian dua pihak yang saling sadar &amp; sukarela.</p>
+    </footer>
+
+  </section><!-- /#page-pinpri -->
+
+
+  <!-- ============================================================
+       PAGE: ARISAN
+  ============================================================ -->
+  <section id="page-arisan" class="page page-arisan">
+
+    <!-- Hero -->
+    <div class="arisan-hero">
+      <div class="arisan-hero-content">
+        <button class="back-btn back-btn-arisan" onclick="showPage('home')" aria-label="Kembali ke beranda">
+          &larr; Kembali
+        </button>
+        <div class="arisan-hero-visual">
+          <img src="AssetArisan/HeaderX.png" alt="Arisan by Dynoo — Banner Utama" class="arisan-hero-banner"
+            loading="eager" />
+        </div>
+        <div class="arisan-hero-text">
+          <span class="hero-eyebrow-arisan">&#128022; Dynoo is Here!</span>
+          <h1 class="arisan-hero-title">Arisan<br /><span>By Dynoo</span></h1>
+          <p class="arisan-hero-subtitle">
+            Arisan yang <strong>menyenangkan</strong>, <strong>teratur</strong>,
+            dan <strong>amanah</strong> bersama komunitas Dynoo.
+            Pilih sesuai kebutuhanmu!
+          </p>
+          <a href="https://wa.me/nomor-wa-anda?text=Halo%20Dynoo!%20Saya%20mau%20bergabung%20Arisan" target="_blank"
+            rel="noopener noreferrer" class="wa-btn wa-btn-arisan" id="arisan-cta-hero">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            Gabung via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arisan Types Section -->
+    <div class="arisan-types">
+      <h2 class="section-title arisan-section-title">Jenis Arisan Kami</h2>
+      <p class="section-subtitle" style="color:#5a6e4a">Pilih jenis arisan yang paling sesuai dengan kebutuhanmu!</p>
+
+      <div class="arisan-type-cards">
+
+        <!-- Mendatar Card -->
+        <div class="arisan-type-card">
+          <div class="arisan-type-img-wrap">
+            <img src="AssetArisan/Ava-ArisanMendatar.png" alt="Arisan Mendatar by Dynoo" class="arisan-type-img"
+              loading="lazy" />
+          </div>
+          <div class="arisan-type-body">
+            <h3 class="arisan-type-title">Arisan Mendatar</h3>
+            <p class="arisan-type-desc">
+              Sistem arisan dengan nominal setoran dan penerimaan yang <strong>tetap</strong>
+              dan <strong>merata</strong> untuk semua peserta.
+            </p>
+            <ul class="arisan-type-features">
+              <li>&#10003; Setoran &amp; penerimaan sama rata</li>
+              <li>&#10003; Aman dan mudah diprediksi</li>
+              <li>&#10003; Cocok untuk pemula arisan</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Menurun Card -->
+        <div class="arisan-type-card">
+          <div class="arisan-type-img-wrap">
+            <img src="AssetArisan/Ava-ArisanMenurun.png" alt="Arisan Menurun by Dynoo" class="arisan-type-img"
+              loading="lazy" />
+          </div>
+          <div class="arisan-type-body">
+            <h3 class="arisan-type-title">Arisan Menurun</h3>
+            <p class="arisan-type-desc">
+              Sistem arisan di mana nominal setoran <strong>semakin berkurang</strong>
+              setiap periode setelah mendapat giliran. Makin lama, makin ringan!
+            </p>
+            <ul class="arisan-type-features">
+              <li>&#10003; Beban semakin ringan setiap periode</li>
+              <li>&#10003; Terima lebih besar di awal</li>
+              <li>&#10003; Cocok untuk yang butuh dana cepat</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Wisuda / Special Card -->
+        <div class="arisan-type-card arisan-type-special">
+          <div class="arisan-type-img-wrap">
+            <img src="AssetArisan/Ava-Wisuda.png" alt="Arisan Wisuda by Dynoo" class="arisan-type-img" loading="lazy" />
+          </div>
+          <div class="arisan-type-body">
+            <h3 class="arisan-type-title">Arisan Wisuda &#127891;</h3>
+            <p class="arisan-type-desc">
+              Arisan spesial bertema <strong>Wisuda</strong> &mdash; tabung bersama untuk
+              momen kelulusan impianmu!
+            </p>
+            <ul class="arisan-type-features">
+              <li>&#10003; Tema spesial &amp; berkesan</li>
+              <li>&#10003; Tabungan terarah untuk wisuda</li>
+              <li>&#10003; Komunitas yang solid &amp; hangat</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /.arisan-type-cards -->
+    </div>
+
+    <!-- Gallery / Carousel Section -->
+    <div class="arisan-gallery">
+      <h2 class="section-title arisan-section-title">Galeri Arisan</h2>
+      <p class="section-subtitle" style="color:#5a6e4a">Klik gambar untuk memperbesar. Geser untuk melihat semua!</p>
+
+      <div class="carousel-wrapper arisan-carousel-wrapper" id="arisan-carousel-wrapper">
+        <button class="carousel-btn carousel-btn-arisan carousel-prev" id="arisan-prev" onclick="carouselPrev('arisan')"
+          aria-label="Sebelumnya">&#8592;</button>
+
+        <div class="carousel-track-container">
+          <div class="carousel-track" id="arisan-track">
+            <!-- Slide 1: Logo -->
+            <div class="carousel-slide">
+              <img src="AssetArisan/Logo.png" alt="Logo Arisan By Dynoo" class="carousel-img" loading="lazy"
+                onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Logo Arisan By Dynoo</p>
+            </div>
+            <!-- Slide 2: Mendatar -->
+            <div class="carousel-slide">
+              <img src="AssetArisan/Ava-ArisanMendatar.png" alt="Arisan Mendatar" class="carousel-img" loading="lazy"
+                onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Arisan Mendatar</p>
+            </div>
+            <!-- Slide 3: Menurun -->
+            <div class="carousel-slide">
+              <img src="AssetArisan/Ava-ArisanMenurun.png" alt="Arisan Menurun" class="carousel-img" loading="lazy"
+                onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Arisan Menurun</p>
+            </div>
+            <!-- Slide 4: Wisuda -->
+            <div class="carousel-slide">
+              <img src="AssetArisan/Ava-Wisuda.png" alt="Arisan Wisuda" class="carousel-img" loading="lazy"
+                onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Arisan Wisuda</p>
+            </div>
+            <!-- Slide 5: Duos -->
+            <div class="carousel-slide">
+              <img src="AssetArisan/Ava-DuosByDynoo.png" alt="Duos by Dynoo" class="carousel-img" loading="lazy"
+                onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Duos by Dynoo</p>
+            </div>
+            <!-- Slide 6: Stiker 1 -->
+            <div class="carousel-slide">
+              <img src="AssetArisan/Stiker1.png" alt="Stiker Dynoo's Arisan" class="carousel-img" loading="lazy"
+                onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Dynoo's Arisan</p>
+            </div>
+            <!-- Slide 7: Stiker 2 -->
+            <div class="carousel-slide">
+              <img src="AssetArisan/Stiker2.png" alt="Arisan by Dynoo Stiker" class="carousel-img" loading="lazy"
+                onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Arisan by Dynoo</p>
+            </div>
+            <!-- Slide 8: AvaX -->
+            <div class="carousel-slide">
+              <img src="AssetArisan/AvaX.png" alt="Arisan By Dynoo" class="carousel-img" loading="lazy"
+                onclick="openLightbox(this.src, this.alt)" />
+              <p class="carousel-caption">Arisan By Dynoo</p>
+            </div>
+          </div><!-- /.carousel-track -->
+        </div>
+
+        <button class="carousel-btn carousel-btn-arisan carousel-next" id="arisan-next" onclick="carouselNext('arisan')"
+          aria-label="Selanjutnya">&#8594;</button>
+      </div><!-- /.carousel-wrapper -->
+
+      <!-- Dots indicator -->
+      <div class="carousel-dots" id="arisan-dots"></div>
+    </div><!-- /.arisan-gallery -->
+
+    <!-- How it Works Section -->
+    <div class="arisan-how">
+      <div class="arisan-how-inner">
+        <h2 class="section-title arisan-section-title">Alur Bergabung Arisan</h2>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Hubungi Dynoo</h3>
+              <p>Chat via WhatsApp dan tanyakan slot arisan yang tersedia saat ini.</p>
+            </div>
+          </div>
+          <div class="how-step-connector"></div>
+          <div class="how-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Pilih Jenis Arisan</h3>
+              <p>Tentukan jenis arisan yang ingin kamu ikuti (Mendatar, Menurun, atau Wisuda).</p>
+            </div>
+          </div>
+          <div class="how-step-connector"></div>
+          <div class="how-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Setuju &amp; Bergabung</h3>
+              <p>Baca dan sepakati syarat &amp; ketentuan, lalu bergabung ke grup arisan.</p>
+            </div>
+          </div>
+          <div class="how-step-connector"></div>
+          <div class="how-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Setor &amp; Nikmati!</h3>
+              <p>Setor tepat waktu dan tunggu giliranmu menerima arisan. Seru &amp; menguntungkan!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="testimonials arisan-testimonials">
+      <h2 class="section-title arisan-section-title">Kata Peserta Arisan &#128172;</h2>
+      <p class="section-subtitle" style="color:#5a6e4a">Kisah sukses dari peserta arisan Dynoo</p>
+
+      <div class="testi-grid">
+
+        <div class="testi-card testi-card-arisan">
+          <div class="testi-header">
+            <div class="testi-avatar testi-avatar-arisan">
+              <img src="AssetArisan/Stiker1.png" alt="Avatar peserta Arisan" />
+            </div>
+            <div class="testi-meta">
+              <strong>Nia K.</strong>
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+          </div>
+          <p class="testi-text">"Udah ikut arisan Dynoo 3 putaran dan selalu aman! Admin-nya responsif, pembayaran tepat
+            waktu. Rekomen banget buat yang mau nabung sambil dapet uang arisan!"</p>
+        </div>
+
+        <div class="testi-card testi-card-arisan">
+          <div class="testi-header">
+            <div class="testi-avatar testi-avatar-arisan">
+              <img src="AssetArisan/Stiker2.png" alt="Avatar peserta Arisan" />
+            </div>
+            <div class="testi-meta">
+              <strong>Fita L.</strong>
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+          </div>
+          <p class="testi-text">"Arisan Wisuda Dynoo membantu banget persiapan aku! Sistem menurunnya juga bikin nggak
+            kerasa beratnya. Dynoo emang paling trusted di antara yang lain!"</p>
+        </div>
+
+        <div class="testi-card testi-card-arisan">
+          <div class="testi-header">
+            <div class="testi-avatar testi-avatar-arisan">
+              <img src="AssetArisan/AvaX.png" alt="Avatar peserta Arisan" />
+            </div>
+            <div class="testi-meta">
+              <strong>Aldi P.</strong>
+              <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            </div>
+          </div>
+          <p class="testi-text">"Komunitas arisan Dynoo tuh solid banget! Nggak pernah ada drama, semua bayar tepat
+            waktu. Adminnya transparan soal jadwal dan pembayaran. Gas terus Dynoo!"</p>
+        </div>
+
+      </div><!-- /.testi-grid -->
+    </div><!-- /.arisan-testimonials -->
+
+    <!-- Final CTA -->
+    <div class="arisan-cta-section">
+      <div class="cta-section-inner">
+        <img src="AssetArisan/Logo.png" alt="Arisan by Dynoo mascot" class="cta-mascot" loading="lazy" />
+        <div class="cta-section-text">
+          <h2>Yuk, Bergabung Sekarang!</h2>
+          <p>Jangan sampai kehabisan slot! Hubungi Dynoo via WhatsApp untuk bergabung ke grup arisan pilihan kamu.</p>
+          <a href="https://wa.me/nomor-wa-anda?text=Halo%20Dynoo!%20Saya%20mau%20bergabung%20Arisan%20By%20Dynoo"
+            target="_blank" rel="noopener noreferrer" class="wa-btn wa-btn-arisan" id="arisan-cta-bottom">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            Chat di WhatsApp Sekarang
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer footer-arisan">
+      <p>&copy; 2025 Arisan by Dynoo. Let's Go! &#128022;</p>
+      <p class="footer-sub">Bergabunglah dengan ratusan peserta yang telah mempercayai Dynoo.</p>
+    </footer>
+
+  </section><!-- /#page-arisan -->
+
+
+  <!-- ============================================================
+       LIGHTBOX OVERLAY (shared for both pages)
+  ============================================================ -->
+  <div id="lightbox-overlay" class="lightbox-overlay" onclick="closeLightbox()" role="dialog" aria-modal="true"
+    aria-label="Tampilan gambar diperbesar">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Tutup lightbox">&times;</button>
+    <img id="lightbox-img" src="" alt="" class="lightbox-img" onclick="event.stopPropagation()" />
+    <p id="lightbox-caption" class="lightbox-caption"></p>
+  </div>
+
+  <!-- Main JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>

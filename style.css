@@ -1,0 +1,1832 @@
+/* ================================================================
+   style.css — Dynoo Website
+   Mobile-First, Vanilla CSS
+   Color Palettes:
+     Pinpri: Deep forest green (#1b5e38), bright teal (#2e7d52),
+             light sage (#a8d5a2), grid white bg
+     Arisan: Olive/sage (#5a6e4a), warm beige (#d4b896),
+             light gray-green (#c5cfc0), argyle pale bg
+   ================================================================ */
+
+/* ================================================================
+   0. CSS CUSTOM PROPERTIES (Design Tokens)
+   ================================================================ */
+:root {
+  /* --- Pinpri Palette --- */
+  --pinpri-dark: #1a4d30;
+  /* deep forest green */
+  --pinpri-main: #2e7d52;
+  /* vibrant mid-green */
+  --pinpri-mid: #4caf72;
+  /* bright accent green */
+  --pinpri-light: #a8d5b0;
+  /* soft sage */
+  --pinpri-pale: #e8f5ec;
+  /* very light mint bg */
+  --pinpri-teal: #3d9970;
+  /* teal accent */
+  --pinpri-cream: #f5f0e8;
+  /* warm white */
+
+  /* --- Arisan Palette --- */
+  --arisan-dark: #3d4e2e;
+  /* deep olive */
+  --arisan-main: #5a6e4a;
+  /* olive green */
+  --arisan-mid: #7a9060;
+  /* mid sage */
+  --arisan-light: #c5cfc0;
+  /* light gray-green */
+  --arisan-pale: #eef0e8;
+  /* pale sage bg */
+  --arisan-beige: #d4b896;
+  /* warm tan */
+  --arisan-cream: #f2ede4;
+  /* warm cream */
+  --arisan-tan: #b89870;
+  /* deep tan */
+
+  /* --- Neutral / Shared --- */
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --text-dark: #2c2c2c;
+  --text-mid: #555555;
+  --text-light: #888888;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.18);
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-h: 68px;
+
+  /* WhatsApp green */
+  --wa-green: #25d366;
+  --wa-green-dark: #128c7e;
+}
+
+/* ================================================================
+   1. RESET & BASE
+   ================================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Poppins', 'Nunito', sans-serif;
+  color: var(--text-dark);
+  background: var(--off-white);
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ================================================================
+   2. SPA PAGE SWITCHING
+   ================================================================ */
+
+/* All pages are hidden by default */
+.page {
+  display: none;
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  /* space for fixed nav */
+}
+
+/* Active page is shown */
+.page.active {
+  display: block;
+  animation: pageFadeIn 0.45s ease forwards;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================================================
+   3. GLOBAL NAVIGATION BAR
+   ================================================================ */
+.global-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-h);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Brand button */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-brand-text {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  background: linear-gradient(135deg, var(--pinpri-main), var(--arisan-main));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+/* Desktop nav links */
+.nav-links {
+  display: flex;
+  gap: 6px;
+}
+
+.nav-link {
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  transition: all var(--transition);
+  letter-spacing: 0.2px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: var(--pinpri-pale);
+  color: var(--pinpri-main);
+}
+
+/* Hamburger (mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background var(--transition);
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: var(--text-dark);
+  border-radius: 2px;
+  transition: all var(--transition);
+}
+
+.hamburger:hover {
+  background: var(--pinpri-pale);
+}
+
+/* Mobile menu dropdown */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-md);
+  padding: 8px 0 12px;
+  z-index: 999;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-link {
+  padding: 13px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: left;
+  transition: background var(--transition);
+}
+
+.mobile-link:hover {
+  background: var(--pinpri-pale);
+  color: var(--pinpri-main);
+}
+
+/* ================================================================
+   4. SHARED SECTION UTILITIES
+   ================================================================ */
+.section-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 0.97rem;
+  color: var(--text-mid);
+  margin-bottom: 36px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Gradient text utilities */
+.gradient-text-pinpri {
+  background: linear-gradient(135deg, var(--pinpri-main), var(--pinpri-mid));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-home {
+  background: linear-gradient(135deg, var(--pinpri-dark), var(--arisan-beige), var(--arisan-main));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-arisan {
+  background: linear-gradient(135deg, var(--arisan-main), var(--arisan-beige));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* WhatsApp button (base) */
+.wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  transition: all var(--transition);
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+  cursor: pointer;
+}
+
+.wa-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.wa-btn-pinpri {
+  background: linear-gradient(135deg, var(--wa-green), var(--wa-green-dark));
+  color: white;
+}
+
+.wa-btn-pinpri:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+}
+
+.wa-btn-arisan {
+  background: linear-gradient(135deg, var(--wa-green), var(--wa-green-dark));
+  color: white;
+}
+
+.wa-btn-arisan:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+}
+
+/* Back button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--pinpri-dark);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+  margin-bottom: 20px;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+}
+
+.back-btn:hover {
+  background: white;
+  transform: translateX(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.back-btn-arisan {
+  color: var(--arisan-dark);
+}
+
+/* Site footer */
+.site-footer {
+  text-align: center;
+  padding: 32px 20px;
+  font-size: 0.88rem;
+  color: var(--text-light);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.footer-sub {
+  margin-top: 4px;
+  font-size: 0.82rem;
+}
+
+.footer-pinpri {
+  background: var(--pinpri-pale);
+  color: var(--pinpri-dark);
+}
+
+.footer-arisan {
+  background: var(--arisan-pale);
+  color: var(--arisan-dark);
+}
+
+/* Stars */
+.stars {
+  color: #fbbf24;
+  font-size: 0.95rem;
+}
+
+/* ================================================================
+   5. HOME PAGE
+   ================================================================ */
+.page-home {
+  background: var(--off-white);
+}
+
+/* --- 5a. Home Hero --- */
+.home-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(160deg,
+      #e8f5ec 0%,
+      #f2ede4 40%,
+      #eef0e8 80%,
+      #e8f5ec 100%);
+  padding: 60px 20px 40px;
+}
+
+/* Decorative floating blobs */
+.home-hero-bg-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  animation: floatBlob 8s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--pinpri-light), transparent);
+  top: -80px;
+  left: -80px;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--arisan-beige), transparent);
+  top: 20%;
+  right: -60px;
+  animation-delay: 2.5s;
+}
+
+.shape-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--arisan-light), transparent);
+  bottom: -40px;
+  left: 30%;
+  animation-delay: 5s;
+}
+
+@keyframes floatBlob {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+
+  66% {
+    transform: translate(-15px, 15px) scale(0.97);
+  }
+}
+
+.home-hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 640px;
+}
+
+.home-hero-eyebrow {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.home-hero-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.2rem, 8.5vw, 5.8rem);
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
+
+.home-hero-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 18px 0 24px;
+}
+
+.home-hero-logo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--white);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: floatMascot 4s ease-in-out infinite;
+}
+
+.home-hero-logo:hover {
+  transform: scale(1.08) rotate(5deg);
+  box-shadow: var(--shadow-lg);
+}
+
+.home-hero-tagline {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+  color: var(--arisan-main);
+  margin-bottom: 16px;
+  letter-spacing: -0.3px;
+}
+
+.home-hero-subtitle {
+  font-size: clamp(0.92rem, 2.5vw, 1.05rem);
+  color: var(--text-mid);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.home-hero-subtitle strong {
+  color: var(--pinpri-main);
+}
+
+.home-hero-badges {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.badge-trusted {
+  background: rgba(46, 125, 82, 0.12);
+  color: var(--pinpri-main);
+  border: 1.5px solid rgba(46, 125, 82, 0.25);
+}
+
+.badge-fast {
+  background: rgba(212, 184, 150, 0.2);
+  color: var(--arisan-tan);
+  border: 1.5px solid rgba(212, 184, 150, 0.4);
+}
+
+.badge-fun {
+  background: rgba(90, 110, 74, 0.1);
+  color: var(--arisan-main);
+  border: 1.5px solid rgba(90, 110, 74, 0.22);
+}
+
+/* --- 5b. Home Services --- */
+.home-services {
+  padding: 72px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.home-services-title {
+  color: var(--text-dark);
+}
+
+.service-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: 16px;
+}
+
+/* Service card base */
+.service-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: white;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 28px;
+  border: 2px solid transparent;
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Top accent bar */
+.card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.card-accent-pinpri {
+  background: linear-gradient(90deg, var(--pinpri-dark), var(--pinpri-mid), var(--pinpri-light));
+}
+
+.card-accent-arisan {
+  background: linear-gradient(90deg, var(--arisan-dark), var(--arisan-beige), var(--arisan-light));
+}
+
+.card-pinpri:hover {
+  border-color: var(--pinpri-light);
+}
+
+.card-arisan:hover {
+  border-color: var(--arisan-light);
+}
+
+/* Mascot image */
+.card-mascot-wrap {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.card-mascot {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform var(--transition);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.12));
+  background-color: var(--white);
+}
+
+.card-pinpri .card-mascot {
+  border: 4px solid var(--pinpri-light);
+}
+
+.card-arisan .card-mascot {
+  border: 4px solid var(--arisan-light);
+}
+
+.service-card:hover .card-mascot {
+  transform: scale(1.08) rotate(-2deg);
+}
+
+/* Card body */
+.card-body {
+  padding: 8px 24px 28px;
+  width: 100%;
+}
+
+.card-tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+
+.tag-pinpri {
+  background: var(--pinpri-pale);
+  color: var(--pinpri-dark);
+}
+
+.tag-arisan {
+  background: var(--arisan-pale);
+  color: var(--arisan-dark);
+}
+
+.card-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1.45rem;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+  letter-spacing: -0.4px;
+}
+
+.card-desc {
+  font-size: 0.93rem;
+  color: var(--text-mid);
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+.card-features {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.card-features li {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  font-weight: 500;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.92rem;
+  transition: all var(--transition);
+}
+
+.cta-pinpri {
+  background: linear-gradient(135deg, var(--pinpri-dark), var(--pinpri-main));
+  color: white;
+  box-shadow: 0 4px 14px rgba(46, 125, 82, 0.35);
+}
+
+.cta-arisan {
+  background: linear-gradient(135deg, var(--arisan-dark), var(--arisan-beige));
+  color: white;
+  box-shadow: 0 4px 14px rgba(90, 110, 74, 0.35);
+}
+
+.service-card:hover .cta-btn {
+  transform: translateX(4px);
+}
+
+/* --- 5c. Why Dynoo --- */
+.home-why {
+  background: linear-gradient(160deg, var(--pinpri-pale) 0%, var(--arisan-cream) 100%);
+  padding: 72px 20px;
+}
+
+.why-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.why-mascot {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
+  animation: floatMascot 4s ease-in-out infinite;
+}
+
+@keyframes floatMascot {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.why-content {
+  width: 100%;
+}
+
+.why-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.why-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+
+.why-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.why-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pinpri-pale);
+  border-radius: 12px;
+}
+
+.why-item strong {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.why-item p {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.55;
+}
+
+/* ================================================================
+   6. PINPRI PAGE
+   ================================================================ */
+.page-pinpri {
+  background: var(--off-white);
+}
+
+/* --- 6a. Pinpri Hero --- */
+.pinpri-hero {
+  position: relative;
+  background: linear-gradient(160deg,
+      var(--pinpri-dark) 0%,
+      var(--pinpri-main) 50%,
+      #3d9970 100%);
+  padding: 40px 20px 60px;
+  overflow: hidden;
+}
+
+/* Subtle grid pattern overlay */
+.pinpri-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+.pinpri-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pinpri-hero-visual {
+  margin-bottom: 24px;
+}
+
+.pinpri-hero-banner {
+  width: 100%;
+  max-width: 640px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition);
+}
+
+.pinpri-hero-banner:hover {
+  transform: scale(1.01);
+}
+
+.hero-eyebrow-pinpri {
+  display: inline-block;
+  padding: 5px 14px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.pinpri-hero-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.8rem, 9vw, 5rem);
+  color: white;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+}
+
+.pinpri-hero-title span {
+  color: var(--pinpri-light);
+  display: block;
+}
+
+.pinpri-hero-subtitle {
+  font-size: clamp(0.92rem, 2.5vw, 1.08rem);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+  line-height: 1.7;
+  max-width: 500px;
+}
+
+.pinpri-hero-subtitle strong {
+  color: white;
+}
+
+/* --- 6b. Pinpri Info Cards --- */
+.pinpri-info {
+  background: var(--pinpri-pale);
+  padding: 72px 20px;
+}
+
+.pinpri-info-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pinpri-section-title {
+  color: var(--pinpri-dark);
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.info-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 24px 22px;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--pinpri-main);
+  transition: all var(--transition);
+}
+
+.info-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  border-left-color: var(--pinpri-dark);
+}
+
+.info-icon {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.info-card h3 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--pinpri-dark);
+  margin-bottom: 8px;
+}
+
+.info-card p {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* --- 6c. Pinpri Gallery --- */
+.pinpri-gallery {
+  padding: 72px 20px;
+  background: white;
+}
+
+/* --- 6e. Pinpri Testimonials --- */
+.pinpri-testimonials {
+  background: var(--pinpri-pale);
+  padding: 72px 20px;
+}
+
+/* --- 6f. Pinpri CTA Section --- */
+.pinpri-cta-section {
+  background: linear-gradient(135deg, var(--pinpri-dark), var(--pinpri-main));
+  padding: 72px 20px;
+}
+
+/* ================================================================
+   7. ARISAN PAGE
+   ================================================================ */
+.page-arisan {
+  background: var(--arisan-cream);
+}
+
+/* --- 7a. Arisan Hero --- */
+.arisan-hero {
+  background: linear-gradient(160deg,
+      var(--arisan-dark) 0%,
+      var(--arisan-main) 60%,
+      var(--arisan-beige) 100%);
+  padding: 40px 20px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Argyle-esque dots pattern */
+.arisan-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+}
+
+.arisan-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.arisan-hero-visual {
+  margin-bottom: 24px;
+}
+
+.arisan-hero-banner {
+  width: 100%;
+  max-width: 720px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition);
+}
+
+.arisan-hero-banner:hover {
+  transform: scale(1.01);
+}
+
+.hero-eyebrow-arisan {
+  display: inline-block;
+  padding: 5px 14px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.arisan-hero-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.8rem, 9vw, 5rem);
+  color: white;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+}
+
+.arisan-hero-title span {
+  color: var(--arisan-beige);
+  display: block;
+}
+
+.arisan-hero-subtitle {
+  font-size: clamp(0.92rem, 2.5vw, 1.08rem);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+  line-height: 1.7;
+  max-width: 500px;
+}
+
+.arisan-hero-subtitle strong {
+  color: white;
+}
+
+/* --- 7b. Arisan Types --- */
+.arisan-types {
+  padding: 72px 20px;
+  background: var(--arisan-pale);
+}
+
+.arisan-section-title {
+  color: var(--arisan-dark);
+}
+
+.arisan-type-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 16px auto 0;
+}
+
+.arisan-type-card {
+  background: white;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition);
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.arisan-type-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--arisan-light);
+}
+
+.arisan-type-special {
+  border-top: 4px solid var(--arisan-beige);
+}
+
+.arisan-type-img-wrap {
+  background: var(--arisan-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  min-height: 180px;
+}
+
+.arisan-type-img {
+  max-height: 160px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.12));
+  transition: transform var(--transition);
+}
+
+.arisan-type-card:hover .arisan-type-img {
+  transform: scale(1.07);
+}
+
+.arisan-type-body {
+  padding: 22px 20px 28px;
+  flex: 1;
+}
+
+.arisan-type-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: var(--arisan-dark);
+  margin-bottom: 10px;
+}
+
+.arisan-type-desc {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.arisan-type-features {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.arisan-type-features li {
+  font-size: 0.87rem;
+  color: var(--arisan-main);
+  font-weight: 600;
+}
+
+/* --- 7c. Arisan Gallery --- */
+.arisan-gallery {
+  padding: 72px 20px;
+  background: white;
+}
+
+/* --- 7d. How It Works --- */
+.arisan-how {
+  padding: 72px 20px;
+  background: var(--arisan-pale);
+}
+
+.arisan-how-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.how-steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-top: 16px;
+}
+
+.how-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 22px 22px;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  max-width: 600px;
+  transition: all var(--transition);
+}
+
+.how-step:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+.step-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--arisan-dark), var(--arisan-main));
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(90, 110, 74, 0.35);
+}
+
+.step-content h3 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--arisan-dark);
+  margin-bottom: 4px;
+}
+
+.step-content p {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.55;
+}
+
+.how-step-connector {
+  width: 3px;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--arisan-main), var(--arisan-beige));
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+/* --- 7e. Arisan Testimonials --- */
+.arisan-testimonials {
+  background: var(--arisan-cream);
+  padding: 72px 20px;
+}
+
+/* --- 7f. Arisan CTA --- */
+.arisan-cta-section {
+  background: linear-gradient(135deg, var(--arisan-dark), var(--arisan-main), var(--arisan-beige));
+  padding: 72px 20px;
+}
+
+/* ================================================================
+   8. CAROUSEL (shared)
+   ================================================================ */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+
+.carousel-track-container {
+  flex: 1;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.carousel-track {
+  display: flex;
+  gap: 0;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  cursor: zoom-in;
+  transition: transform var(--transition), box-shadow var(--transition);
+  background: white;
+}
+
+.carousel-img:hover {
+  transform: scale(1.015);
+  box-shadow: var(--shadow-md);
+}
+
+.carousel-caption {
+  margin-top: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  text-align: center;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50px;
+}
+
+/* Carousel navigation buttons */
+.carousel-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pinpri-main), var(--pinpri-dark));
+  color: white;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
+  transition: all var(--transition);
+  font-weight: 700;
+  z-index: 2;
+}
+
+.carousel-btn:hover {
+  transform: scale(1.12);
+  box-shadow: var(--shadow-lg);
+}
+
+.carousel-btn-arisan {
+  background: linear-gradient(135deg, var(--arisan-main), var(--arisan-dark));
+}
+
+/* Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pinpri-light);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.dot.active {
+  background: var(--pinpri-main);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.arisan-carousel-wrapper .dot {
+  background: var(--arisan-light);
+}
+
+.arisan-carousel-wrapper .dot.active {
+  background: var(--arisan-main);
+}
+
+/* ================================================================
+   9. TESTIMONIALS (shared)
+   ================================================================ */
+.testi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testi-card {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 24px 22px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+  position: relative;
+}
+
+/* Quote decorative mark */
+.testi-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  font-size: 5rem;
+  line-height: 1;
+  opacity: 0.06;
+  font-family: 'Georgia', serif;
+  pointer-events: none;
+}
+
+.testi-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.testi-card-pinpri {
+  border-top: 4px solid var(--pinpri-main);
+}
+
+.testi-card-arisan {
+  border-top: 4px solid var(--arisan-main);
+}
+
+.testi-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.testi-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 3px solid var(--pinpri-light);
+}
+
+.testi-avatar-arisan {
+  border-color: var(--arisan-light);
+}
+
+.testi-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testi-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.testi-meta strong {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
+
+.testi-text {
+  font-size: 0.92rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* ================================================================
+   10. CTA SECTION (shared)
+   ================================================================ */
+.cta-section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+
+.cta-mascot {
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.2));
+  animation: floatMascot 3.5s ease-in-out infinite;
+}
+
+.cta-section-text h2 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  color: white;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.cta-section-text p {
+  font-size: 0.97rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 24px;
+  line-height: 1.65;
+  max-width: 480px;
+}
+
+/* ================================================================
+   11. LIGHTBOX
+   ================================================================ */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  cursor: zoom-out;
+  animation: lightboxFadeIn 0.25s ease;
+}
+
+.lightbox-overlay.open {
+  display: flex;
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox-img {
+  max-width: min(90vw, 700px);
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: lightboxZoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: default;
+}
+
+@keyframes lightboxZoomIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lightbox-caption {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.92rem;
+  margin-top: 14px;
+  text-align: center;
+  font-style: italic;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  backdrop-filter: blur(4px);
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1) rotate(90deg);
+}
+
+/* ================================================================
+   12. RESPONSIVE BREAKPOINTS (Tablet: 640px+)
+   ================================================================ */
+@media (min-width: 640px) {
+
+  /* Service cards 2 columns */
+  .service-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Info cards 2 columns */
+  .info-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Why grid 2 columns */
+  .why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Arisan type cards 2 columns + special takes full on 3rd */
+  .arisan-type-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .arisan-type-special {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+
+  .arisan-type-special .arisan-type-img-wrap {
+    min-width: 200px;
+    max-width: 240px;
+  }
+
+  /* Testimonial grid 2 columns + 3rd full */
+  .testi-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Why inner side by side */
+  .why-inner {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .why-mascot {
+    width: 220px;
+    flex-shrink: 0;
+  }
+}
+
+/* ================================================================
+   13. RESPONSIVE BREAKPOINTS (Desktop: 900px+)
+   ================================================================ */
+@media (min-width: 900px) {
+
+  /* Show nav links, hide hamburger */
+  .nav-links {
+    display: flex;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  /* Info cards 4 columns */
+  .info-cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  /* Arisan type cards 3 columns */
+  .arisan-type-cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .arisan-type-special {
+    grid-column: auto;
+    flex-direction: column;
+  }
+
+  .arisan-type-special .arisan-type-img-wrap {
+    min-width: unset;
+    max-width: unset;
+  }
+
+  /* Testimonial grid 3 columns */
+  .testi-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /* Why grid 2 columns (already set) */
+
+  /* Hero layouts — side by side */
+  .pinpri-hero-content,
+  .arisan-hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .pinpri-hero-visual,
+  .arisan-hero-visual {
+    margin-bottom: 0;
+  }
+
+  /* CTA section side by side */
+  .cta-section-inner {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .cta-section-text p {
+    margin-left: 0;
+  }
+
+  /* back btn — reposition over hero grid */
+  .pinpri-hero-content .back-btn,
+  .arisan-hero-content .back-btn {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ================================================================
+   14. MOBILE NAV (< 900px)
+   ================================================================ */
+@media (max-width: 899px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* ================================================================
+   15. TOUCH SWIPE hint (mobile)
+   ================================================================ */
+@media (max-width: 600px) {
+  .carousel-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+  }
+
+  .carousel-img {
+    max-height: 300px;
+  }
+
+  .pinpri-hero-title,
+  .arisan-hero-title {
+    font-size: 2.6rem;
+  }
+}
+
+/* ================================================================
+   16. ACCESSIBILITY & UTILITIES
+   ================================================================ */
+
+/* Focus visible ring */
+:focus-visible {
+  outline: 3px solid var(--pinpri-mid);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Smooth scrolling for content areas */
+.page {
+  scroll-behavior: smooth;
+}
+
+/* Prevent layout shift on image load */
+.carousel-img,
+.card-mascot,
+.why-mascot,
+.cta-mascot,
+.arisan-type-img,
+.pinpri-hero-banner,
+.arisan-hero-banner {
+  image-rendering: -webkit-optimize-contrast;
+}
