@@ -1729,15 +1729,20 @@ a {
 .testi-image-wrap {
   margin-top: 10px;
   width: 100%;
+  aspect-ratio: 9 / 16;
   border-radius: var(--radius-sm);
   overflow: hidden;
   cursor: zoom-in;
+  background: #f4f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .testi-image {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
   display: block;
   transition: transform var(--transition);
 }
